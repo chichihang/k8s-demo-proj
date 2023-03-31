@@ -1,5 +1,7 @@
 # aws-eks-app-deployment
 
+## Original from: https://github.com/listentolearn/aws-eks-app-deployment
+
 ## Steps to deploy application
 
 1. Create the underlying infrastructure (VPC, subnets, route tables, internet gateway, nat gateway, security groups).
