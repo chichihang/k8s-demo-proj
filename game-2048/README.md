@@ -14,7 +14,20 @@
 1. Tag the public subnets with Tag name: kubernetes.io/role/elb; Tag value: 1.
 2. Create IAM OIDC identity provider for your cluster.
 3. Create load balancer controller policy and load balancer trust policy.
+   - Download the load balancer policy
+   ```
+   curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
+   ```
+   - Create load balancer policy
+   ```
+   aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam-policy.json
+   ```
 4. Create load balancer controller role.
+   ```
+   aws iam create-role --role-name haaha-role --assume-role-policy-document file://haaha-Trust-Policy.json
+   ```
 5. Create service account.
 6. Add eks-charts helm repository and update.
 7. Install load balancer controller using helm.
