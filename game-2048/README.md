@@ -22,11 +22,18 @@
    ```
    aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
-    --policy-document file://iam-policy.json
+    --policy-document file://iam_policy-policy.json
    ```
 4. Create load balancer controller role.
+   - Create a IAM role for loadbalancer. Note that the trust policy is different to ALB Controller policy
    ```
    aws iam create-role --role-name haaha-role --assume-role-policy-document file://haaha-Trust-Policy.json
+   ```
+   - Attach the policy into IAM role
+   ```
+   aws iam attach-role-policy \
+   --policy-arn arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
+   --role-name role-name
    ```
 5. Create service account.
 6. Add eks-charts helm repository and update.
